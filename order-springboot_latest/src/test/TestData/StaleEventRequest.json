@@ -1,0 +1,67 @@
+{
+  "processorError":null,
+  "context":null,
+  "header":{
+    "parentId":{
+      "id":null,
+      "name":null,
+      "storeKeySet":null,
+      "parentId":null
+    },
+    "operation":null,
+    "payloadType":"BO",
+    "originalSource":null,
+    "sourceDateTime":null,
+    "publisher":"rxhome-kafka-processor",
+    "publisherType":null,
+    "transactionId":"22242",
+    "tenantId": 512,
+    "requestId":null,
+    "attunityTimeStamp":"1526792400000",
+    "retryCount":"1"
+  },
+  "payload":{
+    "resourceId":null,
+    "orderId":"181155812",
+    "fulfillmentCenterId":"555",
+    "orderFulfillmentId":"555-181155812-02",
+    "forPerson":null,
+    "forName":null,
+    "careOfName":null,
+    "postalAddress":{
+      "streetAddress":[
+        "1 MAIN ST",
+        ""
+      ],
+      "officeSuite":null,
+      "apartmentNumber":null,
+      "postOfficeBoxNumber":null,
+      "postalCode":"7645-0",
+      "city":"MONTVALE",
+      "state":{
+        "code":"NJ",
+        "name":null
+      },
+      "country":{
+        "name":null,
+        "iso2Code":"US",
+        "iso3Code":"USA",
+        "description":null
+      }
+    },
+    "needByDate":"2018-11-12",
+    "promisedDate":"2018-11-12",
+    "shipByDate":"2018-11-12",
+    "orderCreatedDateTime":"2018-11-12 T 00:00:00.000",
+    "lineOfBusinessCode":{
+      "name":"Specialty",
+      "description":"Specialty"
+    },
+    "status":
+      {
+        "value":"Processing",
+        "effectiveDateTime":1531843718365,
+        "expirationDateTime":null
+      }
+  }
+}

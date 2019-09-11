@@ -1,0 +1,14 @@
+{
+  "header": {
+    "retryCount": 1
+  },
+  "payload": {
+    "prefix": "v1-order",
+    "type": "processing",
+    "receivedTimestamp": 0,
+    "properties": {
+      "orderResourceId": "ffae6812-0843-44f0-a4dd-ccd63b5945cc",
+      "sentTimestamp": "1559928822624"
+    }
+  }
+}

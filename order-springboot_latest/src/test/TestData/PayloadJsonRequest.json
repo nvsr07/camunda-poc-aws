@@ -1,0 +1,115 @@
+{
+  "processorError": null,
+  "processorFiltered": null,
+  "header": {
+    "parentId": {
+      "id": null,
+      "name": null,
+      "storeKeySet": null,
+      "parentId": null
+    },
+    "operation": null,
+    "payloadType": "DTO",
+    "originalSource": null,
+    "sourceDateTime": null,
+    "publisher": null,
+    "publisherType": null,
+    "transactionId": "22222",
+    "requestId": "2223"
+  },
+  "payload": {
+    "orderId": "181257004",
+    "fulfillmentCenterId": "02",
+    "orderFulfillmentId": "02-181257004",
+    "forPerson": null,
+    "forName": {
+      "first": "Purna",
+      "middle": null,
+      "last": "Eluru",
+      "preferredFirst": null,
+      "prefix": null,
+      "professionalSuffixes": null,
+      "generationalSuffix": null
+    },
+    "careOfName": null,
+    "postalAddress": {
+      "relativeId": null,
+      "parentResourceId": null,
+      "links": null,
+      "storeKeySet": null,
+      "streetAddress": [
+        "AddressLine1"
+      ],
+      "officeSuite": null,
+      "apartmentNumber": null,
+      "postOfficeBoxNumber": null,
+      "postalCode": "63043",
+      "city": "St Louis",
+      "state": {
+        "code": "MO",
+        "name": "Missouri",
+        "description": null
+      },
+      "country": {
+        "name": null,
+        "iso2Code": "US",
+        "iso3Code": "USA",
+        "description": null
+      },
+      "status": null,
+      "temporary": null,
+      "unreachable": null,
+      "unverified": null,
+      "sourcedFrom": null,
+      "properties": null
+    },
+    "needByDate": "2018-04-20",
+    "promisedDate": "2018-04-20",
+    "shipByDate": "2018-04-20",
+    "orderCreatedDateTime":"2018-06-14T19:25:34.272 UTC",
+    "lineOfBusinessCode": {
+      "name": "MailOrder",
+      "description": "test lob"
+    },
+    "status": {
+      "effectiveDateTime": "2018-03-07T11:10:30.333 CST",
+      "value": "Created"
+    },
+    "financialStatus": null,
+    "items": [
+      {
+        "relativeId": "18419039-0b58-4867-9fd8-7e9fa8869f98",
+        "productTypeCode": "RX",
+        "prescriptionFill": {
+          "resourceId": "3ab80dca-d176-4d94-98d5-bc13e59b59dc",
+          "fillNumber": "57",
+          "relativeId": "885ae5a8-b62c-4b0f-882a-6a0b0f3bd0fa"
+        },
+        "shipment": null,
+        "status": {
+          "value": "Created",
+          "effectiveDateTime": "2018-03-07T11:10:30.333 EST"
+        },
+        "financialStatus": null,
+        "payments": [
+          {
+            "relativeId": null,
+            "planId": "XYZ",
+            "groupId": "EXS000000031862",
+            "patientBillIndicator": null,
+            "owedAmount": {
+              "amount": "null",
+              "currency": "USD"
+            },
+            "links": [
+            ]
+          }
+        ],
+        "links": [
+        ]
+      }
+    ],
+    "links": [
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-reservation
+  labels:
+    app: inventory-reservation
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-reservation
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: inventory-reservation
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: nvsr07/inventory-reservation
+        imagePullPolicy: Always
+        name: inventory-reservation
+        ports:
+        - containerPort: 8064
+          protocol: TCP
+

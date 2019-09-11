@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: personal-financial-account
+  labels:
+    app: personal-financial-account
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: personal-financial-account
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: personal-financial-account
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: nvsr07/personal-financial-account
+        imagePullPolicy: Always
+        name: personal-financial-account
+        ports:
+        - containerPort: 8071
+          protocol: TCP
+

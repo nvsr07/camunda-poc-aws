@@ -1,0 +1,2 @@
+#org.springframework.cloud.bootstrap.BootstrapImportSelectorConfiguration=org.camunda.bpm.engine.spring.SpringProcessEngineServicesConfiguration
+#org.camunda.bpm.engine.spring.SpringProcessEngineServicesConfiguration=org.camunda.bpm.spring.boot.starter.CamundaBpmProperties

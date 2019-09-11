@@ -1,0 +1,8 @@
+/home/ec2-user/environment/monitor/src/main/java/com/esrx/services/monitor/web/WebSocketConfig.java
+/home/ec2-user/environment/monitor/src/main/java/com/esrx/services/monitor/messages/MessageListener.java
+/home/ec2-user/environment/monitor/src/main/java/com/esrx/services/monitor/domain/PastEvent.java
+/home/ec2-user/environment/monitor/src/main/java/com/esrx/services/monitor/persistence/LogRepository.java
+/home/ec2-user/environment/monitor/src/main/java/com/esrx/services/monitor/MonitorApplication.java
+/home/ec2-user/environment/monitor/src/main/java/com/esrx/services/monitor/web/TomcatConfiguration.java
+/home/ec2-user/environment/monitor/src/main/java/com/esrx/services/monitor/web/MonitorRestController.java
+/home/ec2-user/environment/monitor/src/main/java/com/esrx/services/monitor/messages/Message.java

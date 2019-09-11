@@ -1,0 +1,140 @@
+{"processorError":null,
+  "processorFiltered":null,
+  "header":{
+    "parentId":{
+      "id":null,
+      "name":null,
+      "storeKeySet":null,
+      "parentId":null
+    },
+    "operation":null,
+    "payloadType":"DTO",
+    "originalSource":null,
+    "sourceDateTime":null,
+    "publisher":null,
+    "publisherType":null,
+    "transactionId":"22222",
+    "requestId": "2223",
+    "retryCount":"1"
+  },
+  "payload":{
+    "resourceId":null,
+    "orderId":"000012345",
+    "fulfillmentCenterId":"02",
+    "orderFulfillmentId":"02-000012345",
+    "forPerson":{
+      "resourceId":"12121211"
+    },
+    "forName":{
+      "first":"AFIRST",
+      "middle":null,
+      "last":"AAA",
+      "preferredFirst":null,
+      "prefix":null,
+      "professionalSuffixes":null,
+      "generationalSuffix":null
+    },
+    "careOfName":{
+      "first":"AFIRST",
+      "middle":null,
+      "last":"AAA",
+      "preferredFirst":null,
+      "prefix":null,
+      "professionalSuffixes":null,
+      "generationalSuffix":null
+    },
+    "postalAddress":{
+      "relativeId":"c64e0eea-091a-4237-1f90-30db1a8cf482",
+      "parentResourceId":null,
+      "links":null,
+      "storeKeySet":null,
+      "streetAddress":[
+        "1 MAIN ST",
+        ""
+      ],
+      "officeSuite":null,
+      "apartmentNumber":null,
+      "postOfficeBoxNumber":null,
+      "postalCode":"7645-0",
+      "city":"MONTVALE",
+      "state":{
+        "code":"NJ",
+        "name":null,
+        "description":null
+      },
+      "country":{
+        "name":null,
+        "iso2Code":"US",
+        "iso3Code":"USA",
+        "description":null
+      },
+      "status":null,
+      "temporary":null,
+      "unreachable":null,
+      "unverified":null,
+      "sourcedFrom":null,
+      "properties":null
+    },
+    "needByDate":null,
+    "promisedDate":null,
+    "shipByDate":null,
+    "orderCreatedDateTime":"2018-06-14T19:25:34.272 UTC",
+    "lineOfBusinessCode":{
+      "name":"MailOrder",
+      "description":"MailOrder"
+    },
+    "status":{
+      "value":"Created",
+      "effectiveDateTime":"2018-06-14T19:25:34.271 UTC",
+      "expirationDateTime":null
+    },
+    "financialStatus":null,
+    "items":[
+      {
+        "links": [
+          {
+            "href": "string",
+            "rel": "string",
+            "templated": true
+          }
+        ],
+        "relativeId": "c64e0eea-091a-4237-1f90-30db1a8cf482",
+        "productTypeCode": "string",
+        "prescriptionFill": {
+          "resourceId": "c64e0eea-091a-4237-1f90-30db1a8cf482",
+          "fillNumber": "string"
+        },
+        "shipment": {
+          "resourceId": "c64e0eea-091a-4237-1f90-30db1a8cf482"
+        },
+        "status": {
+          "effectiveDateTime": "2018-11-07T19:10:30 CST",
+          "expirationDateTime": "2018-11-07T19:10:30 CST",
+          "value": "string"
+        },
+        "payments": [
+          {
+            "links": [
+              {
+                "href": "string",
+                "rel": "string",
+                "templated": true
+              }
+            ],
+            "relativeId": "c64e0eea-091a-4237-1f90-30db1a8cf482",
+            "planId": "string",
+            "groupId": "string",
+            "patientBillIndicator": false,
+            "owedAmount": {
+              "amount": "string",
+              "currency": "USD"
+            }
+          }
+        ]
+      }
+    ],
+    "links":[
+
+    ]
+  }
+}

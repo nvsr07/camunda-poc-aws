@@ -1,0 +1,56 @@
+{
+  "processorError":null,
+  "context":null,
+  "header":{
+    "parentId":{
+      "id":null,
+      "name":null,
+      "storeKeySet":null,
+      "parentId":null
+    },
+    "operation":null,
+    "payloadType":"DTO",
+    "originalSource":null,
+    "sourceDateTime":null,
+    "sourceName" : "NDI",
+    "publisher":null,
+    "publisherType":null,
+    "transactionId":"22241",
+    "requestId":null
+  },
+  "payload":{
+    "resourceId":null,
+    "orderId":"181155811",
+    "fulfillmentCenterId":"13",
+    "orderFulfillmentId":"13-181155811",
+    "forPerson":null,
+    "forName":null,
+    "careOfName":null,
+    "postalAddress":null,
+    "needByDate":null,
+    "promisedDate":null,
+    "shipByDate":null,
+    "orderCreatedDateTime":null,
+    "lineOfBusinessCode":{
+      "name":"MailOrder",
+      "description":"MailOrder"
+    },
+    "statuses":[
+      {
+        "value":"Cancelled",
+        "effectiveDateTime":1531843718365,
+        "expirationDateTime":null
+      }
+    ],
+    "financialStatuses":[
+
+    ],
+    "items":[
+
+    ],
+    "createDateTime":null,
+    "createdBy":null,
+    "updateDateTime":null,
+    "updatedBy":null
+  }
+}

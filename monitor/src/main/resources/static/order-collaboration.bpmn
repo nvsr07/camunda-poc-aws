@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.1.2">
+  <bpmn:collaboration id="Collaboration_1dqip2s">
+    <bpmn:participant id="Participant_0jr41ch" name="Order" processRef="Process_1" />
+    <bpmn:participant id="Participant_1y2prsi" name="Prescription" processRef="Process_114lf5u" />
+    <bpmn:participant id="InventoryReservedEvent" name="Inventory" />
+    <bpmn:participant id="AttachMembershipCommand" name="Membership" processRef="Process_1h737zl" />
+    <bpmn:messageFlow id="Send_CreateFillCommand" sourceRef="Receive_CreateFillCompleteEvent" targetRef="XReceive_RetrievePaymentCommand" />
+    <bpmn:messageFlow id="CSend_CreateFillCompleteEvent" sourceRef="Send_CreateFillCompleteEvent" targetRef="Receive_CreateFillCompleteEvent" />
+    <bpmn:messageFlow id="Send_ReserveInventoryCommand" sourceRef="Receive_InventoryReservedEvent" targetRef="InventoryReservedEvent" />
+    <bpmn:messageFlow id="MessageFlow_1natodm" sourceRef="InventoryReservedEvent" targetRef="Receive_InventoryReservedEvent" />
+    <bpmn:messageFlow id="Send_AttachMembershipCommand" sourceRef="MembershipAttachedEvent" targetRef="StartEvent_08ihbvw" />
+    <bpmn:messageFlow id="MessageFlow_1udu9il" sourceRef="EndEvent_1eolwzv" targetRef="MembershipAttachedEvent" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="true">
+    <bpmn:serviceTask id="Receive_CreateFillCompleteEvent" name="Add Order Lines">
+      <bpmn:incoming>SequenceFlow_1mjma69</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0t6q3t8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="OrderPlacedEvent">
+      <bpmn:outgoing>SequenceFlow_1mjma69</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1qjjmb0" sourceRef="Receive_InventoryReservedEvent" targetRef="MembershipAttachedEvent" />
+    <bpmn:sequenceFlow id="SequenceFlow_0t6q3t8" sourceRef="Receive_CreateFillCompleteEvent" targetRef="Receive_InventoryReservedEvent" />
+    <bpmn:sequenceFlow id="SequenceFlow_01mx78t" sourceRef="MembershipAttachedEvent" targetRef="EndEvent_0v1uga1" />
+    <bpmn:sequenceFlow id="SequenceFlow_1mjma69" sourceRef="OrderPlacedEvent" targetRef="Receive_CreateFillCompleteEvent" />
+    <bpmn:serviceTask id="Receive_InventoryReservedEvent" name="Reserve Inventory">
+      <bpmn:incoming>SequenceFlow_0t6q3t8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1qjjmb0</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="MembershipAttachedEvent" name="Attach Membership">
+      <bpmn:incoming>SequenceFlow_1qjjmb0</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_01mx78t</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_00cd3g1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_00cd3g1" sourceRef="MembershipAttachedEvent" targetRef="ClaimAdjuducatedEvent" />
+    <bpmn:endEvent id="EndEvent_0v1uga1">
+      <bpmn:incoming>SequenceFlow_01mx78t</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ClaimAdjuducatedEvent" name="Claim Adjuducate">
+      <bpmn:incoming>SequenceFlow_00cd3g1</bpmn:incoming>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmn:process id="Process_114lf5u" isExecutable="false">
+    <bpmn:startEvent id="XReceive_RetrievePaymentCommand">
+      <bpmn:outgoing>SequenceFlow_1f6v63w</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Send_CreateFillCompleteEvent">
+      <bpmn:incoming>SequenceFlow_1jyisns</bpmn:incoming>
+      <bpmn:messageEventDefinition />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1jyisns" sourceRef="CustomerCreditUsedEvent" targetRef="Send_CreateFillCompleteEvent" />
+    <bpmn:sequenceFlow id="SequenceFlow_1f6v63w" sourceRef="XReceive_RetrievePaymentCommand" targetRef="CustomerCreditUsedEvent" />
+    <bpmn:task id="CustomerCreditUsedEvent" name="Create Fills">
+      <bpmn:incoming>SequenceFlow_1f6v63w</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1jyisns</bpmn:outgoing>
+    </bpmn:task>
+  </bpmn:process>
+  <bpmn:process id="Process_1h737zl" isExecutable="false">
+    <bpmn:endEvent id="EndEvent_1eolwzv">
+      <bpmn:incoming>SequenceFlow_1hxoobw</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Task_1h14dfw" name="...">
+      <bpmn:incoming>SequenceFlow_0fam8io</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1hxoobw</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:startEvent id="StartEvent_08ihbvw">
+      <bpmn:outgoing>SequenceFlow_0fam8io</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1hxoobw" sourceRef="Task_1h14dfw" targetRef="EndEvent_1eolwzv" />
+    <bpmn:sequenceFlow id="SequenceFlow_0fam8io" sourceRef="StartEvent_08ihbvw" targetRef="Task_1h14dfw" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1dqip2s">
+      <bpmndi:BPMNShape id="Participant_0jr41ch_di" bpmnElement="Participant_0jr41ch" isHorizontal="true">
+        <dc:Bounds x="236" y="81" width="1299" height="277" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="OrderPlacedEvent">
+        <dc:Bounds x="286" y="130" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="259" y="232" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_1y2prsi_di" bpmnElement="Participant_1y2prsi" isHorizontal="true">
+        <dc:Bounds x="202" y="390" width="461" height="126" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1mjma69_di" bpmnElement="SequenceFlow_1mjma69">
+        <di:waypoint x="322" y="148" />
+        <di:waypoint x="392" y="148" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="312" y="193" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0t6q3t8_di" bpmnElement="SequenceFlow_0t6q3t8">
+        <di:waypoint x="492" y="148" />
+        <di:waypoint x="765" y="148" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="593.5" y="193" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1qjjmb0_di" bpmnElement="SequenceFlow_1qjjmb0">
+        <di:waypoint x="865" y="148" />
+        <di:waypoint x="1093" y="148" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="997.5" y="193" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0v1uga1_di" bpmnElement="EndEvent_0v1uga1">
+        <dc:Bounds x="1404" y="140" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1331" y="236" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_01mx78t_di" bpmnElement="SequenceFlow_01mx78t">
+        <di:waypoint x="1193" y="148" />
+        <di:waypoint x="1299" y="148" />
+        <di:waypoint x="1299" y="158" />
+        <di:waypoint x="1404" y="158" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1272.5" y="193" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_13kax6y_di" bpmnElement="XReceive_RetrievePaymentCommand">
+        <dc:Bounds x="278" y="438" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="296" y="544" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1ld927u_di" bpmnElement="CustomerCreditUsedEvent">
+        <dc:Bounds x="403" y="416" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1f6v63w_di" bpmnElement="SequenceFlow_1f6v63w">
+        <di:waypoint x="314" y="456" />
+        <di:waypoint x="403" y="456" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="282.5" y="501" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_0x6m43j_di" bpmnElement="Send_CreateFillCommand">
+        <di:waypoint x="420" y="188" />
+        <di:waypoint x="420" y="319" />
+        <di:waypoint x="292" y="319" />
+        <di:waypoint x="292" y="439" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="311" y="364" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1jyisns_di" bpmnElement="SequenceFlow_1jyisns">
+        <di:waypoint x="503" y="456" />
+        <di:waypoint x="607" y="456" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="412" y="501" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_11k2hh1_di" bpmnElement="CSend_CreateFillCompleteEvent">
+        <di:waypoint x="625" y="438" />
+        <di:waypoint x="625" y="319" />
+        <di:waypoint x="463" y="319" />
+        <di:waypoint x="463" y="188" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="499" y="364" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0c3h45e_di" bpmnElement="Send_CreateFillCompleteEvent">
+        <dc:Bounds x="607" y="438" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="580" y="544" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_1e4qmtc_di" bpmnElement="InventoryReservedEvent" isHorizontal="true">
+        <dc:Bounds x="685" y="390" width="300" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="MessageFlow_0v4isfn_di" bpmnElement="Send_ReserveInventoryCommand">
+        <di:waypoint x="792" y="188" />
+        <di:waypoint x="792" y="390" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="782" y="349" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_1natodm_di" bpmnElement="MessageFlow_1natodm">
+        <di:waypoint x="837" y="390" />
+        <di:waypoint x="837" y="188" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="827" y="349" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_07eq6u8_di" bpmnElement="AttachMembershipCommand" isHorizontal="true">
+        <dc:Bounds x="1015" y="378" width="333" height="119" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_08ihbvw_di" bpmnElement="StartEvent_08ihbvw">
+        <dc:Bounds x="1085" y="422" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1131" y="540" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="MessageFlow_1rhxdew_di" bpmnElement="Send_AttachMembershipCommand">
+        <di:waypoint x="1104" y="188" />
+        <di:waypoint x="1104" y="422" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1140" y="356" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_1h14dfw_di" bpmnElement="Task_1h14dfw">
+        <dc:Bounds x="1142" y="393" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0fam8io_di" bpmnElement="SequenceFlow_0fam8io">
+        <di:waypoint x="1121" y="440" />
+        <di:waypoint x="1132" y="440" />
+        <di:waypoint x="1132" y="433" />
+        <di:waypoint x="1142" y="433" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1162" y="497" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1eolwzv_di" bpmnElement="EndEvent_1eolwzv">
+        <dc:Bounds x="1278" y="422" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1327" y="540" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1hxoobw_di" bpmnElement="SequenceFlow_1hxoobw">
+        <di:waypoint x="1242" y="433" />
+        <di:waypoint x="1260" y="433" />
+        <di:waypoint x="1260" y="440" />
+        <di:waypoint x="1278" y="440" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1292" y="497" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_1udu9il_di" bpmnElement="MessageFlow_1udu9il">
+        <di:waypoint x="1296" y="422" />
+        <di:waypoint x="1296" y="305" />
+        <di:waypoint x="1189" y="305" />
+        <di:waypoint x="1189" y="186" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1253.5" y="356" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_024bym1_di" bpmnElement="Receive_CreateFillCompleteEvent">
+        <dc:Bounds x="392" y="108" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1kr5apn_di" bpmnElement="Receive_InventoryReservedEvent">
+        <dc:Bounds x="765" y="108" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1x7pjxg_di" bpmnElement="MembershipAttachedEvent">
+        <dc:Bounds x="1093" y="108" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_00cd3g1_di" bpmnElement="SequenceFlow_00cd3g1">
+        <di:waypoint x="1193" y="148" />
+        <di:waypoint x="1264" y="148" />
+        <di:waypoint x="1264" y="258" />
+        <di:waypoint x="1335" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_049iizn_di" bpmnElement="ClaimAdjuducatedEvent">
+        <dc:Bounds x="1335" y="218" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

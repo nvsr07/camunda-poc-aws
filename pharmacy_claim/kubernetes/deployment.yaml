@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pharmacy-claim
+  labels:
+    app: pharmacy-claim
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pharmacy-claim
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: pharmacy-claim
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: nvsr07/pharmacy-claim
+        imagePullPolicy: Always
+        name: pharmacy-claim
+        ports:
+        - containerPort: 8066
+          protocol: TCP
+

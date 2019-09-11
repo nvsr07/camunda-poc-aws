@@ -1,0 +1,4 @@
+include::{adoc-sources}/overview.adoc[]
+include::{adoc-sources}/paths.adoc[]
+include::{adoc-sources}/definitions.adoc[]
+include::swaggerUiLink.adoc[]

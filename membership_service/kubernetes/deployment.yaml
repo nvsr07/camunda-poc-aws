@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: membership-service
+  labels:
+    app: membership-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: membership-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: membership-service
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: nvsr07/membership-service
+        imagePullPolicy: Always
+        name: membership-service
+        ports:
+        - containerPort: 8069
+          protocol: TCP
+

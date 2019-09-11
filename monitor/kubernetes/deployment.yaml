@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eep-order-api-kafka-monitor
+  labels:
+    app: eep-order-api-kafka-monitor
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eep-order-api-kafka-monitor
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: eep-order-api-kafka-monitor
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: nvsr07/eep-order-api-kafka-monitor
+        imagePullPolicy: Always
+        name: eep-order-api-kafka-monitor
+        ports:
+        - containerPort: 8095
+          protocol: TCP
+

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-checkout
+  labels:
+    app: order-checkout
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-checkout
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: order-checkout
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: nvsr07/order-checkout
+        imagePullPolicy: Always
+        name: order-checkout
+        ports:
+        - containerPort: 8090
+          protocol: TCP
+

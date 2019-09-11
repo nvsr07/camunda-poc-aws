@@ -1,0 +1,46 @@
+{
+  "processorError":null,
+  "context":null,
+  "header":{
+    "parentId":{
+      "id":null,
+      "name":null,
+      "storeKeySet":null,
+      "parentId":null
+    },
+    "operation":null,
+    "payloadType":"BO",
+    "originalSource":null,
+    "sourceDateTime":null,
+    "publisher":"rxhome-kafka-processor",
+    "publisherType":null,
+    "transactionId":"22242",
+    "tenantId":256,
+    "requestId":null
+  },
+  "payload":{
+    "resourceId":null,
+    "orderId":"181155812",
+    "fulfillmentCenterId":"555",
+    "orderFulfillmentId":"555-181155812-02",
+    "forPerson":null,
+    "forName":null,
+    "careOfName":null,
+    "postalAddress":{
+      "streetAddress":null,
+      "officeSuite":null,
+      "apartmentNumber":null,
+      "postOfficeBoxNumber":null,
+      "postalCode":null,
+      "city":null,
+      "state":null,
+      "country":null
+    },
+    "needByDate":null,
+    "promisedDate":null,
+    "shipByDate":null,
+    "orderCreatedDateTime":null,
+    "lineOfBusinessCode":null,
+    "status": null
+  }
+}

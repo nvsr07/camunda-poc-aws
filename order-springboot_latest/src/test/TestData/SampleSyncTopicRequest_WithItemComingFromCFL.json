@@ -1,0 +1,77 @@
+{
+  "processorError":null,
+  "context":null,
+  "header":{
+    "parentId":{
+      "id":null,
+      "name":null,
+      "storeKeySet":null,
+      "parentId":null
+    },
+    "operation":null,
+    "payloadType":"DTO",
+    "originalSource":null,
+    "sourceDateTime":null,
+    "sourceName" : "CFL",
+    "publisher":null,
+    "publisherType":null,
+    "transactionId":"22241",
+    "requestId":null
+  },
+  "payload":{
+    "resourceId":null,
+    "orderId":"181155811",
+    "fulfillmentCenterId":"13",
+    "orderFulfillmentId":"13-181155811",
+    "needByDate":1526792400000,
+    "promisedDate":1526878800000,
+    "shipByDate":1526878800000,
+    "orderCreatedDateTime":1526792400000,
+    "lineOfBusinessCode":{
+      "name":"MailOrder",
+      "description":"MailOrder"
+    },
+    "statuses":[
+      {
+        "value":"Processing",
+        "effectiveDateTime":1531843718365,
+        "expirationDateTime":null
+      }
+    ],
+    "financialStatuses":[
+
+    ],
+    "items":[
+      {
+        "relativeId":null,
+        "productTypeCode":"RX",
+        "prescriptionFill":{
+          "fillNumber":"04",
+          "relativeId":"443ad1f3-da49-43ff-a0c9-9e6838d2f336",
+          "resourceId":"e7583973-d889-48b4-9657-4ded9107e7f8"
+        },
+        "statuses":[
+          {
+            "value":"Stopped",
+            "effectiveDateTime":1531843718381,
+            "expirationDateTime":null
+          }
+        ],
+        "financialStatuses":[
+
+        ],
+        "payments":[
+
+        ],
+        "subInvoiceNum":"12",
+        "ndi99":false,
+        "packDateTime":1531679433000,
+        "labelPrescriptionNumber":"0206"
+      }
+    ],
+    "createDateTime":null,
+    "createdBy":null,
+    "updateDateTime":null,
+    "updatedBy":null
+  }
+}

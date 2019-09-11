@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: financial-transaction
+  labels:
+    app: financial-transaction
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: financial-transaction
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: financial-transaction
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: nvsr07/financial-transaction
+        imagePullPolicy: Always
+        name: financial-transaction
+        ports:
+        - containerPort: 8062
+          protocol: TCP
+
